@@ -15,12 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
+from django.http import HttpResponse
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+def home(request):
+    return HttpResponse("Dharma Portfolio Backend is Live 🚀")
+
+
 urlpatterns = [
+    path('', home),   # 🔥 ROOT URL
     path('admin/', admin.site.urls),
     path('api/', include('backend.Dharma.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
