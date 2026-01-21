@@ -37,11 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'backend.Dharma',
-    'corsheaders',# my new app
+    'Dharma',        # ✅ corrected
+    'corsheaders',
     'rest_framework',
-    
 ]
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', # Isse sabse upar rakhein
