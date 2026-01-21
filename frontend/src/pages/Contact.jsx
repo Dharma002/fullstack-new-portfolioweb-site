@@ -15,7 +15,7 @@ const Contact = () => {
     
     try {
       // Django API call
-      const response = await axios.post('http://127.0.0.1:8000/api/contact/', formData);
+      const response = await axios.post('https://dharma-portfolio.onrender.com/api/contact/', formData);
 
       if (response.status === 201 || response.status === 200) {
         setIsSubmitted(true);
