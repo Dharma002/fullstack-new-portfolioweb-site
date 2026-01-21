@@ -56,6 +56,9 @@ MIDDLEWARE = [
 ]
 CORS_ALLOW_ALL_ORIGINS = True # Development ke liye sahi hai
 
+ROOT_URLCONF = 'core.urls'
+WSGI_APPLICATION = 'core.wsgi.application'
+
 
 TEMPLATES = [
     {
@@ -71,8 +74,8 @@ TEMPLATES = [
         },
     },
 ]
-ROOT_URLCONF = 'core.urls'
-WSGI_APPLICATION = 'core.wsgi.application'
+
+
 
 
 # Database
