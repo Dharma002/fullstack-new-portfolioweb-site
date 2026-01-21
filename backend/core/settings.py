@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Dharma',        # ✅ corrected
+    'Dharma',     # ✅ corrected
     'corsheaders',
     'rest_framework',
 ]
@@ -71,8 +71,8 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'backend.core.wsgi.application'
+ROOT_URLCONF = 'core.urls'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
