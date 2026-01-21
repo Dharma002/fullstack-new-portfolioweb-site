@@ -56,7 +56,7 @@ MIDDLEWARE = [
 ]
 CORS_ALLOW_ALL_ORIGINS = True # Development ke liye sahi hai
 
-ROOT_URLCONF ='backend.core.urls'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

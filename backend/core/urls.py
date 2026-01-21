@@ -34,7 +34,7 @@ def home(request):
 urlpatterns = [
     path('', home),   # 🔥 ROOT URL
     path('admin/', admin.site.urls),
-    path('api/', include('backend.Dharma.urls')),
+    path('api/', include('Dharma.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
