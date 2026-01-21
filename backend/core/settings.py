@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#9qv__q42(0v!4*7u=$ri0i1!0076pwf(8f#&22ho2uq6y_2uf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dharma-portfolio.onrender.com']
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', # Isse sabse upar rakhein
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -55,8 +56,7 @@ MIDDLEWARE = [
 ]
 CORS_ALLOW_ALL_ORIGINS = True # Development ke liye sahi hai
 
-ROOT_URLCONF = 'core.urls'
-
+ROOT_URLCONF ='backend.core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'core.wsgi.application'
+WSGI_APPLICATION = 'backend.core.wsgi.application'
 
 
 # Database
@@ -129,4 +129,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173", # Vite/React ka default URL
     "http://127.0.0.1:5173",
+    "https://dharam-portfolio.vercel.app",
 ]
