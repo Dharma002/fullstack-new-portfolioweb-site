@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Dharma',
+    'backend.Dharma',
     'corsheaders',# my new app
     'rest_framework',
     
