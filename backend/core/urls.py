@@ -16,13 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.http import HttpResponse
+from django.http import HttpResponse , JsonResponse
 from django.conf import settings
 from django.conf.urls.static import static
 
 
 def home(request):
     return HttpResponse("Dharma Portfolio Backend is Live 🚀")
+
+def home(request):
+    return JsonResponse({
+        "status": "ok",
+        "message": "Dharma Portfolio Backend is Live 🚀"
+    })
 
 
 urlpatterns = [
