@@ -9,7 +9,7 @@ const Projects = () => {
 
   useEffect(() => {
     // Django API Call
-    axios.get('http://127.0.0.1:8000/api/portfolio/')
+    axios.get('https://dharma-portfolio.onrender.com/api/projects/')
       .then(res => {
         setProjects(res.data);
         setLoading(false);
