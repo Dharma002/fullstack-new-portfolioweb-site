@@ -135,22 +135,24 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173", # Vite/React ka default URL
-    "http://127.0.0.1:5173",
-    "https://dharam-portfolio.vercel.app",
-]
-
-
 DEBUG = 'RENDER' not in os.environ
 
 if not DEBUG:
-    # Production settings
+    # Production (Render) settings
     ALLOWED_HOSTS = ['dharma-portfolio.onrender.com']
 else:
     # Local settings
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-    
+
+# Isme comma aur formatting bilkul sahi hai
 CSRF_TRUSTED_ORIGINS = [
-    'https://dharma-portfolio.onrender.com'
-]    
+    'https://dharma-portfolio.onrender.com',
+    'https://dharam-portfolio.vercel.app',
+]
+
+# CORS allowed origins
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://dharam-portfolio.vercel.app",
+]
