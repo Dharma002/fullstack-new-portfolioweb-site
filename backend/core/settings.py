@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-#9qv__q42(0v!4*7u=$ri0i1!0076pwf(8f#&22ho2uq6y_2uf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['dharma-portfolio.onrender.com']
+
 
 
 # Application definition
@@ -139,3 +140,17 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     "https://dharam-portfolio.vercel.app",
 ]
+
+
+DEBUG = 'RENDER' not in os.environ
+
+if not DEBUG:
+    # Production settings
+    ALLOWED_HOSTS = ['dharma-portfolio.onrender.com']
+else:
+    # Local settings
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+    
+CSRF_TRUSTED_ORIGINS = [
+    'https://dharma-portfolio.onrender.com'
+]    
