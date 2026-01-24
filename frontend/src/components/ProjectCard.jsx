@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { Github, ExternalLink, Code2 } from 'lucide-react';
 
 const ProjectCard = ({ project }) => {
+  // Safety check: Agar project data nahi mila to kuch render na kare
+  if (!project) return null;
+
   return (
     <motion.div 
       whileHover={{ y: -10 }}
@@ -14,8 +17,9 @@ const ProjectCard = ({ project }) => {
           src={project.image} 
           alt={project.title} 
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          // Agar image path galat ho to fallback color dikhega
+          onError={(e) => { e.target.src = 'https://via.placeholder.com/400x200?text=No+Image'; }}
         />
-        {/* Hover karne par image ke upar ek halka cyan parda aayega */}
         <div className="absolute inset-0 bg-cyan-900/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
       </div>
 
@@ -30,16 +34,26 @@ const ProjectCard = ({ project }) => {
           {project.description}
         </p>
         
-        {/* Tech Stack Tags */}
+        {/* Tech Stack Tags - FIXED LOGIC */}
         <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-          {project.tech_stack.split(',').map((tech, i) => (
-            <span key={i} className="text-[10px] font-mono bg-slate-900 text-cyan-400 px-2 py-1 rounded border border-cyan-500/20">
-              #{tech.trim()}
-            </span>
-          ))}
+          {Array.isArray(project.tech_stack) ? (
+            // Agar Array hai (Local Data format)
+            project.tech_stack.map((tech, i) => (
+              <span key={i} className="text-[10px] font-mono bg-slate-900 text-cyan-400 px-2 py-1 rounded border border-cyan-500/20">
+                #{tech.trim()}
+              </span>
+            ))
+          ) : (
+            // Agar String hai (Purana API format)
+            project.tech_stack?.split(',').map((tech, i) => (
+              <span key={i} className="text-[10px] font-mono bg-slate-900 text-cyan-400 px-2 py-1 rounded border border-cyan-500/20">
+                #{tech.trim()}
+              </span>
+            ))
+          )}
         </div>
 
-        {/* 3. Action Buttons (GitHub & Live Link) */}
+        {/* 3. Action Buttons */}
         <div className="flex gap-4 pt-4 border-t border-slate-700/50">
           <a 
             href={project.github_url} 

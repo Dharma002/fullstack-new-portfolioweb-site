@@ -10,6 +10,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import ScrollToTop from './components/ScrollToTop';
 import SocialSidebar from './components/SocialSidebar';
+import Skills from './pages/Skills';
+
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/skills" element={<Skills />} />
           </Routes>
         </main>
 
