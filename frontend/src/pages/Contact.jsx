@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Mail, MapPin, Linkedin, CheckCircle } from 'lucide-react';
-import axios from 'axios';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('https://dharma-portfolio.onrender.com/api/contact/', formData);
-      if (response.status === 201 || response.status === 200) {
-        setIsSubmitted(true);
-        setFormData({ name: '', email: '', message: '' }); 
-        setTimeout(() => setIsSubmitted(false), 5000); 
-      }
-    } catch (error) {
-      console.error("Backend Error:", error.response?.data || error.message);
-      alert("Bhai, message save nahi hua!");
-    }
+    
+    // Yahan hum koi real API call nahi kar rahe
+    // Bas dummy loading effect aur success dikhane ke liye
+    console.log("Dummy Submit Data:", formData);
+    
+    setIsSubmitted(true);
+    
+    // Form clear kar do
+    setFormData({ name: '', email: '', message: '' }); 
+    
+    // 5 second baad wapas form dikhane ke liye (optional)
+    setTimeout(() => setIsSubmitted(false), 5000); 
   };
 
   return (
@@ -28,7 +28,6 @@ const Contact = () => {
         <motion.h2 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          /* 1. TEXT COLOR FIXED: text-slate-900 (Light Mode) aur dark:text-white (Dark Mode) */
           className="text-5xl font-bold text-slate-900 dark:text-white mb-4 italic uppercase tracking-tighter transition-colors"
         >
           Get In Touch
@@ -47,7 +46,6 @@ const Contact = () => {
           
           <div className="space-y-8">
             <div className="flex items-center gap-6 group">
-              {/* Box Color Fix: bg-slate-100 (Light) / bg-slate-800 (Dark) */}
               <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center border border-slate-200 dark:border-slate-800 group-hover:border-cyan-400 transition-all duration-300">
                 <Mail className="text-cyan-600 dark:text-cyan-400" size={24} />
               </div>
@@ -79,23 +77,31 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Right: Contact Form */}
+        {/* Right: Contact Form (Now purely Frontend) */}
         <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}>
           {isSubmitted ? (
-            <div className="bg-white dark:bg-slate-800/50 p-12 rounded-3xl border border-cyan-500/30 flex flex-col items-center justify-center text-center space-y-4 min-h-[450px] shadow-xl">
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="bg-white dark:bg-slate-800/50 p-12 rounded-3xl border border-cyan-500/30 flex flex-col items-center justify-center text-center space-y-4 min-h-[450px] shadow-xl"
+            >
               <CheckCircle size={60} className="text-cyan-500 animate-bounce" />
               <h4 className="text-2xl font-bold text-slate-900 dark:text-white">Message Sent!</h4>
-              <p className="text-slate-600 dark:text-slate-400">Thank you Dharma, I will get back to you soon.</p>
-            </div>
+              <p className="text-slate-600 dark:text-slate-400">Thank you Dharma, your message has been "submitted" successfully for the demo.</p>
+              <button 
+                onClick={() => setIsSubmitted(false)}
+                className="text-cyan-500 text-sm font-bold hover:underline"
+              >
+                Send another message
+              </button>
+            </motion.div>
           ) : (
-            /* Form Background Fix: White shadow in light mode, Dark in dark mode */
             <form onSubmit={handleSubmit} className="bg-white dark:bg-[#1e293b] p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl space-y-6 transition-colors">
               <div className="space-y-2">
                 <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Full Name</label>
                 <input 
                   type="text" placeholder="Dharmraj Patel" required
                   value={formData.name}
-                  /* Input Fix: light bg with dark text */
                   className="w-full bg-slate-50 dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 p-4 rounded-xl focus:outline-none focus:border-cyan-500 transition-all text-slate-900 dark:text-white placeholder:text-slate-400"
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                 />
