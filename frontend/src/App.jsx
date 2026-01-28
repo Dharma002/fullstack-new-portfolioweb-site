@@ -17,7 +17,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="bg-[#0f172a] text-slate-200 min-h-screen selection:bg-cyan-500">
+      <div className="bg-slate-50 text-slate-900 dark:bg-[#0f172a] dark:text-slate-200 min-h-screen selection:bg-cyan-500 transition-colors duration-500 overflow-x-hidden">
         <Navbar />
         <SocialSidebar /> {/* Sidebar ko yahan rakhein */}
         
@@ -31,12 +31,12 @@ function App() {
           </Routes>
         </main>
 
-        <footer className="py-10 text-center border-t border-slate-900 text-slate-500 text-sm font-mono">
+        <footer className="py-10 text-center border-t border-slate-200 dark:border-slate-800 text-slate-500 text-sm font-mono transition-colors">
           <div className="flex justify-center gap-6 mb-6 lg:hidden">
               {/* Ab ye icons crash nahi karenge kyunki humne import kar liya hai */}
-              <a href="https://github.com/Dharma002" target="_blank" className="hover:text-cyan-400"><Github size={20}/></a>
-              <a href="https://www.linkedin.com/in/dharmraj-patel-32365034b/" target="_blank" className="hover:text-cyan-400"><Linkedin size={20}/></a>
-              <a href="https://instagram.com/itz__patel_ji___" target="_blank" className="hover:text-cyan-400"><Instagram size={20}/></a>
+              <a href="https://github.com/Dharma002" target="_blank" className="hover:text-cyan-500 transition-colors"><Github size={20}/></a>
+              <a href="https://www.linkedin.com/in/dharmraj-patel-32365034b/" target="_blank" className="hover:text-cyan-500 transition-colors"><Linkedin size={20}/></a>
+              <a href="https://instagram.com/itz__patel_ji___" target="_blank" className="hover:text-cyan-500 transition-colors"><Instagram size={20}/></a>
           </div>
           <p>Designed & Built by Dharmraj Patel | 2026</p>
         </footer>
