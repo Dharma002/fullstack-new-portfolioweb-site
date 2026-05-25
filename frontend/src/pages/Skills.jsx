@@ -66,7 +66,7 @@ const Skills = () => {
                     /* Fix: Individual skill box dynamic colors */
                     className="flex flex-col items-center justify-center p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:border-cyan-500/50 transition-all group shadow-sm hover:shadow-md"
                   >
-                    <div className="text-4xl mb-3 grayscale group-hover:grayscale-0 transition-all duration-300">
+                    <div className="text-4xl mb-3  transition-all duration-300">
                       {skill.icon}
                     </div>
                     <span className="text-slate-600 dark:text-slate-300 text-[10px] font-bold uppercase tracking-widest text-center">

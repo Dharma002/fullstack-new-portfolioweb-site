@@ -33,7 +33,7 @@ const About = () => {
               <img 
                 src="/my-DP.jpg" 
                 alt="Dharmraj Patel" 
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 scale-105 hover:scale-100"
+                className="w-full h-full object-cover transition-all duration-500 scale-105 hover:scale-100"
               />
             </div>
 
